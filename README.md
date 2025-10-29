@@ -1,6 +1,6 @@
 # Frontend del Sistema de Gestión Escolar (En Desarrollo)
 
-Interfaz de usuario construida con Angular para interactuar con la [API REST del Sistema de Gestión Escolar](https://github.com/TU_USUARIO/proyecto-escuela-api). Permite a los administradores gestionar alumnos, profesores, carreras, materias y cursos.
+Interfaz de usuario construida con Angular para interactuar con la [API REST del Sistema de Gestión Escolar](https://github.com/ace-jorge/proyecto-escuela-api). Permite a los administradores gestionar alumnos, profesores, carreras, materias y cursos.
 
 ---
 
