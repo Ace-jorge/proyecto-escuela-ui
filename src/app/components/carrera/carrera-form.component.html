@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>{{ data.carrera ? 'Editar Carrera' : 'Nueva Carrera' }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Código</mat-label>
+      <textarea matInput formControlName="codigo"></textarea>
+    </mat-form-field>
+    <div *ngIf="form.errors?.['carreraExists'] && (form.touched || form.dirty)" class="error-message">
+      Una carrera con este nombre y código ya existe.
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="form.value" [disabled]="!form.valid">Guardar</button>
+</div>

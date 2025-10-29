@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>{{ data.alumno ? 'Editar Alumno' : 'Nuevo Alumno' }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="apellido">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Matrícula</mat-label>
+      <input matInput formControlName="matricula">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Género</mat-label>
+      <mat-select formControlName="genero">
+        <mat-option value="M">Masculino</mat-option>
+        <mat-option value="F">Femenino</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Semestre</mat-label>
+      <input matInput formControlName="semestre" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Carrera</mat-label>
+      <mat-select formControlName="carreraId">
+        <mat-option *ngFor="let carrera of carreras$ | async" [value]="carrera.id">
+          {{ carrera.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="save()" [disabled]="!form.valid">Guardar</button>
+</div>

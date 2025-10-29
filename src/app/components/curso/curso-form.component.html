@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>{{ data.curso ? 'Editar Curso' : 'Nuevo Curso' }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Grupo</mat-label>
+      <input matInput formControlName="grupo">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Materia</mat-label>
+      <mat-select formControlName="materiaId">
+        <mat-option *ngFor="let materia of materias$ | async" [value]="materia.id">
+          {{ materia.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Profesor</mat-label>
+      <mat-select formControlName="profesorId">
+        <mat-option *ngFor="let profesor of profesores$ | async" [value]="profesor.id">
+          {{ profesor.nombre }} {{ profesor.apellido }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="save()" [disabled]="!form.valid">Guardar</button>
+</div>
